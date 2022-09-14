@@ -409,6 +409,30 @@ command = "delete_forward_and_insert"
 mode = "nv"
 
 [[keymaps]]
+key = "c"
+command = "change"
+mode = "nv"
+
+[[keymaps]]
+key = "c c"
+command = "change_the_line"
+mode = "nv"
+
+[[keymaps]]
+key = "c w"
+command = "change_word"
+mode = "nv"
+
+[[keymaps]]
+key = "c W"
+command = "change_word_and_whitespace"
+mode = "nv"
+
+[[keymaps]]
+key = "C"
+command = "change_rest_of_the_line"
+
+[[keymaps]]
 key = "shift+i"
 command = "insert_first_non_blank"
 mode = "nv"

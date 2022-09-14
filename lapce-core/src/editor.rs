@@ -1180,6 +1180,15 @@ impl Editor {
                 cursor.mode = CursorMode::Insert(selection);
                 vec![(delta, inval_lines)]
             }
+            Change => {
+                let selection = cursor.edit_selection(buffer);
+                let (delta, inval_lines) =
+                    buffer.edit(&[(&selection, "")], EditType::Delete);
+                let selection =
+                    selection.apply_delta(&delta, true, InsertDrift::Default);
+                cursor.mode = CursorMode::Insert(selection);
+                vec![(delta, inval_lines)]
+            }
             NormalMode => {
                 if !modal {
                     if let CursorMode::Insert(selection) = &cursor.mode {

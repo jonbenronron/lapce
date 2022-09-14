@@ -2606,7 +2606,8 @@ fn show_completion(
         | EditCommand::DeleteForward
         | EditCommand::DeleteWordBackward
         | EditCommand::DeleteWordForward
-        | EditCommand::DeleteForwardAndInsert => {
+        | EditCommand::DeleteForwardAndInsert
+        | EditCommand::Change => {
             let start = match deltas.get(0).and_then(|delta| delta.0.els.get(0)) {
                 Some(xi_rope::DeltaElement::Copy(_, start)) => *start,
                 _ => 0,

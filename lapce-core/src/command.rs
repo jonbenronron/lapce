@@ -38,6 +38,8 @@ pub enum EditCommand {
     DeleteWordBackward,
     #[strum(serialize = "delete_to_beginning_of_line")]
     DeleteToBeginningOfLine,
+    #[strum(serialize = "change")]
+    Change,
     #[strum(message = "Join Lines")]
     #[strum(serialize = "join_lines")]
     JoinLines,
