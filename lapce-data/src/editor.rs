@@ -2285,6 +2285,7 @@ impl LapceEditorBufferData {
     ) -> CommandExecuted {
         let motion_mode = match cmd {
             MotionModeCommand::MotionModeDelete => MotionMode::Delete,
+            MotionModeCommand::MotionModeChange => MotionMode::Change,
             MotionModeCommand::MotionModeIndent => MotionMode::Indent,
             MotionModeCommand::MotionModeOutdent => MotionMode::Outdent,
             MotionModeCommand::MotionModeYank => MotionMode::Yank,

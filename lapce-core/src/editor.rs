@@ -388,6 +388,26 @@ impl Editor {
                 cursor.apply_delta(&delta);
                 deltas.push((delta, inval_lines));
             }
+            MotionMode::Change => {
+                let (start, end) = format_start_end(buffer, start, end, is_vertical);
+                register.add(
+                    RegisterKind::Delete,
+                    RegisterData {
+                        content: buffer.slice_to_cow(start..end).to_string(),
+                        mode: if is_vertical {
+                            VisualMode::Linewise
+                        } else {
+                            VisualMode::Normal
+                        },
+                    },
+                );
+                let selection = Selection::region(start, end);
+                let (delta, inval_lines) =
+                    buffer.edit(&[(&selection, "")], EditType::MotionDelete);
+                cursor.apply_delta(&delta);
+                deltas.push((delta, inval_lines));
+                cursor.mode = CursorMode::Insert(Selection::region(start, start));
+            }
             MotionMode::Yank => {
                 let (start, end) = format_start_end(buffer, start, end, is_vertical);
                 register.add(

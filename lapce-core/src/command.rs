@@ -316,6 +316,8 @@ pub enum FocusCommand {
 pub enum MotionModeCommand {
     #[strum(serialize = "motion_mode_delete")]
     MotionModeDelete,
+    #[strum(serialize = "motion_mode_change")]
+    MotionModeChange,
     #[strum(serialize = "motion_mode_indent")]
     MotionModeIndent,
     #[strum(serialize = "motion_mode_outdent")]
